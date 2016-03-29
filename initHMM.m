@@ -51,7 +51,7 @@ Qprior = zeros(Q,1); Qprior(1) = 1;
 %Qtrans = [0.5 0.5 0; 0 0.5 0.5; 0.5 0 0.5];
 %Qtrans = 0.5*eye(Q);
 Qtrans = 0.5*eye(Q)+ diag(repmat(0.5,1,Q-1),1);
-Qtrans(end,1) = 0.5
+Qtrans(end,1) = 0.5;
 Qtrans = mk_stochastic( Qtrans );
 
 
