@@ -1,9 +1,26 @@
 % ------------------speech-to-text 
-dir_list = dir('/u/cs401/speechdata/Testing/*.phn');
-ibm_text = {};
+
+ibm_text = cell(30, 1);
 for i = 1:length(dir_list)
     
-    flac_file = dir(['/u/cs401/speechdata/Testing/' dir_list(i).name '/*.phn']); 
-    curl_command = sprintf('env LD_LIBRARY_PATH='''' curl -u "d069b5e3-7496-4f1d-b26c-82d618b56e9a":"Rf2SYjGGw2ao" -X POST --header "Content-Type: audio/flac" --header "Transfer-Encoding: chunked" --data-binary @%s " "https://gateway.watsonplatform.net/speech-to-text/api/v2/recognize?continuous=true"', flac_file);
-    [status, ibm_translation{i}] = unix(curl_command);
-end% ------------------text-to-speech
+    flac_file = ['/u/cs401/speechdata/Testing/unkn_' num2str(i) '.flac']; 
+    disp(flac_file)
+    curl_command = sprintf('env LD_LIBRARY_PATH='''' curl -u "d069b5e3-7496-4f1d-b26c-82d618b56e9a":"Rf2SYjGGw2ao" -X POST --header "Content-Type: audio/flac" --header "Transfer-Encoding: chunked" --data-binary @%s "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true"', flac_file);
+    [status, ibm_text{i}] = unix(curl_command);
+    ibm_text{i} = strsplit(ibm_text{i}, '"');
+    
+    fopen('./annotate_')
+    ibm_text{i} = ibm_text{i}{10};
+end
+
+save('./ibm_transcription.mat', 'ibm_text', '-mat')
+% ------------------text-to-speech
+
+
+% {
+%   "credentials": {
+%     "url": "https://stream.watsonplatform.net/text-to-speech/api",
+%     "password": "3o6vWG9hrUdr",
+%     "username": "96c532b7-0e6b-436b-b18f-3f1cfb71028a"
+%   }
+% }
