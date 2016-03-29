@@ -10,3 +10,10 @@ for i = 1:length(dir_list)
 end
 
 % ------------------text-to-speech
+{
+  "credentials": {
+    "url": "https://stream.watsonplatform.net/text-to-speech/api",
+    "password": "3o6vWG9hrUdr",
+    "username": "96c532b7-0e6b-436b-b18f-3f1cfb71028a"
+  }
+}
