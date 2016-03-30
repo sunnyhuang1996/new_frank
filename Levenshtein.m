@@ -1,3 +1,4 @@
+% report both the 4 measurements of error (SE, IE, DE, total) for each sentence and for the entire set of test data used in that section.
 function [SE IE DE LEV_DIST] =Levenshtein(hypothesis,annotation_dir)
 % Input:
 %	hypothesis: The path to file containing the the recognition hypotheses
@@ -10,20 +11,23 @@ function [SE IE DE LEV_DIST] =Levenshtein(hypothesis,annotation_dir)
 %	LEV_DIST: proportion of overall error in all hypotheses
 
 hypo = importdata(hypothesis);
-annotate_list = dir(annotation_dir);
+annotate_list = dir([annotation_dir '/unkn_*.txt']);
 
-%for i=1:length(annotate_list)
-for index=1:1   
+for index=1:length(annotate_list)
+    % initialize DE, IE, SE
+    DE = 0;
+    IE = 0;
+    SE = 0;   
     annotate_file = [annotation_dir '/unkn_' num2str(index) '.txt'];
 
     REF = importdata(annotate_file);
     REF = strsplit(char(strtrim(regexprep(REF,'\d',''))), ' ');
-    disp(REF)
+    %disp(REF)
     n = numel(REF);
  
     hypo{index} = strsplit(char(strtrim(regexprep(hypo{index},'\d',''))), ' ');
     m = numel(hypo{index});
-    disp(hypo{index})
+    
     %matrix of distance
     R = zeros(n+1, m+1);
     %backtracking matrix
@@ -46,9 +50,8 @@ for index=1:1
             ins = R(i, j-1) + 1;
          
             R(i, j) = min([del, sub, ins]);
-            disp(R(i, j))
             if R(i, j) == del
-                B(i, j) = 1; % 1 --> up 
+		B(i, j) = 1; % 1 --> up 
             elseif R(i, j) == ins
                 B(i, j) = 2; % 2 --> left
             else
@@ -57,7 +60,33 @@ for index=1:1
         end
         
     end
-   LEV_DIST = 100 * R / n; 
+    i = n + 1;
+    j = m + 1;
+    while R(i, j) ~= 0
+	if B(i, j) == 3
+	    SE = SE + R(i, j) - R(i-1, j-1);
+	    i = i - 1;
+	    j = j - 1;    
+	elseif B(i, j) == 2
+	    IE = IE + R(i, j) - R(i, j-1);
+	    j = j - 1;
+	else
+	    DE = DE + R(i, j) - R(i-1, j);
+	    i = i - 1; 
+	end
+    end
+    LEV_DIST = 100 * R / n;
+    sentence_i = sprintf('------ sentence %d --------', index); 
+    disp(sentence_i)
+    %disp(R)
     disp(LEV_DIST)
-    disp(B)
+    %disp(B)
+    SE_report = sprintf('SE error: %d', 100 * SE / n);
+    disp(SE_report)
+    DE_report = sprintf('DE error: %d', 100 * DE / n);
+    disp(DE_report)
+    IE_report =  sprintf('IE error: %d', 100 * IE / n);
+    disp(IE_report)
+    total_report = sprintf('total error: %d', 100 * (SE + DE + IE) / n);
+    disp(total_report)
 end

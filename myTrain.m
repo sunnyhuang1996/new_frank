@@ -46,11 +46,11 @@ phonemes = fieldnames(data);
 for index = 1:numel(phonemes)
     % transpose to a one-by-N matrix
     data.(phonemes{index}) = data.(phonemes{index}).';
-    HMM.(phonemes{index}) = initHMM(data.(phonemes{index}));
-    [HMM.(phonemes{index}),LL] = trainHMM(HMM.(phonemes{index}), data.(phonemes{index}), 10);
+    HMM.(phonemes{index}) = initHMM(data.(phonemes{index}), 4, 3, 'kmeans');
+    [HMM.(phonemes{index}),LL] = trainHMM(HMM.(phonemes{index}), data.(phonemes{index}));
 end
 
-save('./HMM.mat', 'HMM', '-mat');
+save('./HMM_20iter_4Mixture.mat', 'HMM', '-mat');
 
 
 
