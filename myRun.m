@@ -6,7 +6,7 @@ addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 phn_list = dir('/u/cs401/speechdata/Testing/*.phn');
 count = struct();
 
-HMM = importdata('./HMM_20iter.mat');
+HMM = importdata('./HMM_20iter_4Mixture.mat');
 
 for i = 1:length(phn_list)
         % loop through each phn file and corresponding mfcc file
@@ -56,8 +56,8 @@ for i = 1:length(phn_list)
             else
                 count.(phoneme{line})(2)  =  count.(phoneme{line})(2) + 1;
             end
-            a = sprintf('candidate is %s, correct is %s', candidate_phone, phoneme{line});
-            disp(a)
+            % a = sprintf('candidate is %s, correct is %s', candidate_phone, phoneme{line});
+            % disp(a)
             
         end
         
@@ -65,9 +65,13 @@ for i = 1:length(phn_list)
     
 end
 
+output_file = fopen('./20_iter_4Mixture_res.txt', 'w');
 each_phone = fieldnames(count);
+
 for index=1:numel(each_phone)
     success_rate = 100 * count.(each_phone{index})(1) / count.(each_phone{index})(2);
     report = sprintf('successfully recognize %s : %d out of %d times. --- rate %d', each_phone{index}, count.(each_phone{index})(1), count.(each_phone{index})(2), success_rate);
-    disp(report)
+    fprintf(output_file, '%s\n', report);
 end
+
+fclose(output_file);

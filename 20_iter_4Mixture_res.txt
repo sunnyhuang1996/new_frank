@@ -1,0 +1,17 @@
+successfully recognize silence : 2 out of 2 times. --- rate 100
+successfully recognize n : 1 out of 1 times. --- rate 100
+successfully recognize aw : 0 out of 1 times. --- rate 0
+successfully recognize hv : 0 out of 1 times. --- rate 0
+successfully recognize ih : 1 out of 2 times. --- rate 50
+successfully recognize r : 0 out of 3 times. --- rate 0
+successfully recognize ix : 1 out of 1 times. --- rate 100
+successfully recognize z : 0 out of 1 times. --- rate 0
+successfully recognize tcl : 0 out of 1 times. --- rate 0
+successfully recognize t : 1 out of 1 times. --- rate 100
+successfully recognize uw : 0 out of 1 times. --- rate 0
+successfully recognize l : 1 out of 1 times. --- rate 100
+successfully recognize ey : 1 out of 1 times. --- rate 100
+successfully recognize m : 1 out of 1 times. --- rate 100
+successfully recognize aa : 0 out of 1 times. --- rate 0
+successfully recognize v : 1 out of 1 times. --- rate 100
+successfully recognize el : 0 out of 1 times. --- rate 0
