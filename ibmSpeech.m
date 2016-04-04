@@ -25,7 +25,7 @@
 %   }
 % }
 
-lik_list = dir('./*.lik')
+lik_list = dir('./*.lik');
 
 for i=1:length(lik_list)
 	lik_file = ['./' lik_list(i).name];
@@ -35,12 +35,21 @@ for i=1:length(lik_list)
 	else
 		voice = 'en-US_LisaVoice';
 	end
-	txt_file = ['u/cs401/speechdata/Testing/unkn_' num2str(i) '.txt'];
-	transcription = strjoin(textread(lik_file, '%s %f')(3:end).');
-	json_format = sprintf('{ "text": "%s" }', trascription);
-	disp(json_format)
-	curl_command = sprintf('env LD_LIBRARY_PATH='''' curl -u "96c532b7-0e6b-436b-b18f-3f1cfb71028a":"3o6vWG9hrUdr" -X POST --header "Content-Type : application/json" --header "Accept: audio/flac" --query "Voice: %s" --data %s "https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize"', voice, json_format);
-	[status, flac_file] = unix(curl_command);
-	disp(flac_file)
+	txt_file = ['/u/cs401/speechdata/Testing/unkn_' num2str(i) '.txt'];
+	transcription = textread(txt_file, '%s');
+	transcription = transcription(3:end);
+	transcription = strjoin(transcription.');
+	json_name = ['./unkn_' num2str(i) '.json'];
+	json_file = fopen(json_name, 'w');
+	
+	json_format = sprintf('{"text":"%s"}', transcription);
+	fprintf(json_file, json_format);
+	output_file = ['ibm_speech' num2str(i) '.flac']
+	%disp(json_format)
+	%curl_command = sprintf('env LD_LIBRARY_PATH='''' curl -u "96c532b7-0e6b-436b-b18f-3f1cfb71028a":"3o6vWG9hrUdr" -X POST --header "Content-Type: application/json" --header "Accept: audio/flac" --data %s "https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=%s"', json_format, voice);
+	%disp(curl_command)
+	curl_command = sprintf('env LD_LIBRARY_PATH='''' curl -u "96c532b7-0e6b-436b-b18f-3f1cfb71028a":"3o6vWG9hrUdr" -X POST --header "Content-Type: application/json" --header "Accept: audio/flac" --data "@%s" "https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=%s" > %s', json_name, voice, output_file);
+        status = unix(curl_command);
+	disp(status)
 	
 end
