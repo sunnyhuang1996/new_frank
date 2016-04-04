@@ -6,7 +6,7 @@ addpath(genpath('/u/cs401/A3_ASR/code/FullBNT-1.0.7'));
 phn_list = dir('/u/cs401/speechdata/Testing/*.phn');
 count = struct();
 
-HMM = importdata('./HMM_20iter_4Mixture.mat');
+HMM = importdata('./HMM_20iter_4Mixture_2State_14Dim_three_quarter_data.mat');
 
 for i = 1:length(phn_list)
         % loop through each phn file and corresponding mfcc file
@@ -31,7 +31,7 @@ for i = 1:length(phn_list)
             start_t = (start_time(line) / 128) + 1;
             end_t = min((end_time(line) / 128) + 1, max_line);
 
-            phoneme_matrix = mfcc_file(start_t:end_t, 1:end-1).';
+            phoneme_matrix = mfcc_file(start_t:end_t, 1:14).';
             
             % iterate thorugh each phonmeme HMM to find the max LL
             test_phones = fieldnames(HMM);
@@ -65,7 +65,7 @@ for i = 1:length(phn_list)
     
 end
 
-output_file = fopen('./20_iter_4Mixture_res.txt', 'w');
+output_file = fopen('./20_iter_4Mixture_2State_14Dim_three_quarter_data_res.txt', 'w');
 each_phone = fieldnames(count);
 
 for index=1:numel(each_phone)
