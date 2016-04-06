@@ -12,6 +12,11 @@ function [SE, IE, DE, LEV_DIST] =Levenshtein(hypothesis,annotation_dir)
 
 hypo = importdata(hypothesis);
 annotate_list = dir([annotation_dir '/unkn_*.txt']);
+total_DE = 0;
+total_SE = 0;
+total_IE = 0;
+total_n = 0;
+
 for index=1:length(annotate_list)
     % initialize DE, IE, SE
 
@@ -25,7 +30,7 @@ for index=1:length(annotate_list)
     REF = strsplit(char(strtrim(regexprep(REF,'\d',''))), ' ');
     %disp(REF)
     n = numel(REF);
- 
+    total_n = total_n + n;
     hypo{index} = strsplit(char(strtrim(regexprep(hypo{index},'\d',''))), ' ');
     m = numel(hypo{index});
 
@@ -73,20 +78,23 @@ for index=1:length(annotate_list)
     while R(i, j) ~= 0
 	if B(i, j) == 3
 	    SE = SE + R(i, j) - R(i-1, j-1);
+	    total_SE = total_SE + R(i, j) - R(i-1, j-1);
 	    i = i - 1;
 	    j = j - 1;    
 	elseif B(i, j) == 2
 	    IE = IE + R(i, j) - R(i, j-1);
+	    total_IE = total_IE +  R(i, j) - R(i, j-1);
 	    j = j - 1;
 	else
 	    DE = DE + R(i, j) - R(i-1, j);
+	    total_DE = total_DE + R(i, j) - R(i-1, j);
 	    i = i - 1; 
 	end
     end
 %     LEV_DIST = 100 * R / n;
     sentence_i = sprintf('------ sentence %d --------', index); 
     disp(sentence_i)
-%     %disp(R)
+    %disp(R)
 %     %disp(LEV_DIST)
 %     %disp(B)
     SE_report = sprintf('SE error: %d', 100 * SE / n);
@@ -95,16 +103,16 @@ for index=1:length(annotate_list)
     disp(DE_report)
     IE_report =  sprintf('IE error: %d', 100 * IE / n);
     disp(IE_report)
-    total_report = sprintf('total error: %d', 100 * (SE + DE + IE) / n);
+    total_report = sprintf('total error: %d, total error count: %d', 100 * (SE + DE + IE) / n, SE + DE + IE);
     disp(total_report)
 end
 
-% SE_report = sprintf('SE error: %d', 100 * SE / total_n);
-% disp(SE_report)
-% DE_report = sprintf('DE error: %d', 100 * DE / total_n);
-% disp(DE_report)
-% IE_report =  sprintf('IE error: %d', 100 * IE / total_n);
-% disp(IE_report)
-% total_report = sprintf('total error: %d', 100 * (SE + DE + IE) / total_n);
-% disp(total_report)
-
+SE_report = sprintf('SE error: %d', 100 * total_SE / total_n);
+disp(SE_report)
+ DE_report = sprintf('DE error: %d', 100 * total_DE / total_n);
+ disp(DE_report)
+ IE_report =  sprintf('IE error: %d', 100 * total_IE / total_n);
+ disp(IE_report)
+ total_report = sprintf('total error: %d, count: %d', 100 * (total_SE + total_DE + total_IE) / total_n, total_SE + total_DE + total_IE);
+ disp(total_report)
+ disp(total_n)
