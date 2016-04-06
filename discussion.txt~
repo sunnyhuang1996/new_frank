@@ -313,3 +313,162 @@ SE error: 0
 DE error: 0
 IE error: 0
 total error: 0
+
+
+>> Levenshtein('./synthesized_transcription.txt','/u/cs401/speechdata/Testing')
+SE error: 6.923077e+00
+DE error: 3.846154e-01
+IE error: 1.538462e+00
+total error: 8.846154e+00, count: 23
+
+------ sentence 1 --------
+SE error: 1.666667e+01
+DE error: 0
+IE error: 0
+total error: 1.666667e+01, total error count: 1
+------ sentence 2 --------
+SE error: 1.250000e+01
+DE error: 0
+IE error: 0
+total error: 1.250000e+01, total error count: 1
+------ sentence 3 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 4 --------
+SE error: 1.111111e+01
+DE error: 1.111111e+01
+IE error: 0
+total error: 2.222222e+01, total error count: 2
+------ sentence 5 --------
+SE error: 3.076923e+01
+DE error: 0
+IE error: 0
+total error: 3.076923e+01, total error count: 4
+------ sentence 6 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 7 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 8 --------
+SE error: 10
+DE error: 0
+IE error: 10
+total error: 20, total error count: 2
+------ sentence 9 --------
+SE error: 1.250000e+01
+DE error: 0
+IE error: 0
+total error: 1.250000e+01, total error count: 1
+------ sentence 10 --------
+SE error: 10
+DE error: 0
+IE error: 0
+total error: 10, total error count: 1
+------ sentence 11 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 12 --------
+SE error: 1.250000e+01
+DE error: 0
+IE error: 0
+total error: 1.250000e+01, total error count: 1
+------ sentence 13 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 14 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 15 --------
+SE error: 1.428571e+01
+DE error: 0
+IE error: 1.428571e+01
+total error: 2.857143e+01, total error count: 2
+------ sentence 16 --------
+SE error: 40
+DE error: 0
+IE error: 0
+total error: 40, total error count: 2
+------ sentence 17 --------
+SE error: 9.090909e+00
+DE error: 0
+IE error: 9.090909e+00
+total error: 1.818182e+01, total error count: 2
+------ sentence 18 --------
+SE error: 9.090909e+00
+DE error: 0
+IE error: 0
+total error: 9.090909e+00, total error count: 1
+------ sentence 19 --------
+SE error: 10
+DE error: 0
+IE error: 10
+total error: 20, total error count: 2
+------ sentence 20 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 21 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 22 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 23 --------
+SE error: 9.090909e+00
+DE error: 0
+IE error: 0
+total error: 9.090909e+00, total error count: 1
+------ sentence 24 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 25 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 26 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 27 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 28 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 29 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+------ sentence 30 --------
+SE error: 0
+DE error: 0
+IE error: 0
+total error: 0, total error count: 0
+
