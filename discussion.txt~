@@ -155,40 +155,8 @@ DE error: 0
 IE error: 0
 total error: 3.333333e+01
 
-===============================Part3.2 Experiment ========================================
-Correct Rate
-3 Mixture: 46.715328467153                          
-4 Mixture: 48.448905109489
-6 Mixture: 46.897810218978
-8 Mixture: 44.981751824818
-
-——————————————————
-
-4 Mixture 1 State:  46.076642325766
-4 Mixture 2 State:  48.722627737226
-4 Mixture 3 State:  48.448905109489
-
-———————————————————
-
-4 Mixture 2 State 10Dimension: 44.525547445255
-4 Mixture 2 State 12Dimension: 46.167883211679
-4 Mixture 2 State 14Dimension: 48.722627737226
-
-————————————————————————
-
-4 Mixture 1 State 7 Dimension:  32.9379560438
-4 Mixture 1 State 10Dimension: 42.42700729927
-4 Mixture 1 State 12Dimension: 43.065693430657
-4 Mixture 1 State 14Dimension: 46.076642325766
-
-——————————————————————————
-4 Mixture 2 State 14Dimension 5 data: 43.3394161
-4 Mixture 2 State 14Dimension 7 data: 46.076642325766
-4 Mixture 2 State 14Dimension 8 data: 46.076642325766
-4 Mixture 2 State 14Dimension full data: 48.722627737226
 
 
-==============================Part 4.1 ================================================
 >> Levenshtein('~/CSC401/new_frank/ibm_transcription.txt','/u/cs401/speechdata/Testing')
 SE error: 1.423077e+01
 DE error: 3.076923e+00
@@ -346,7 +314,7 @@ DE error: 0
 IE error: 0
 total error: 0
 
-=======================================Part 4.2 ==========================================
+
 >> Levenshtein('./synthesized_transcription.txt','/u/cs401/speechdata/Testing')
 SE error: 6.923077e+00
 DE error: 3.846154e-01

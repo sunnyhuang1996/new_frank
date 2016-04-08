@@ -75,7 +75,4 @@ common_sum = sum(pm_x,2)';
 weight = common_sum/T;
 mu = bsxfun(@rdivide, (pm_x * data)', common_sum);
 vary = bsxfun(@rdivide, (pm_x * (data.^2)).', common_sum) - mu.^2;
-
-
-%dir_train = '/u/cs401/speechdata/Training';
         

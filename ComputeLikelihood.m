@@ -21,7 +21,7 @@ end
 
 wbm=zeros(M,t);
 for i=1:M
-    wbm(i,:) = weight(i) * bm_x(i,:);
+    wbm(i,:) = weight(i) * bm_x(i,:)+0.00000001;
 end
 
 %calculate p(z)

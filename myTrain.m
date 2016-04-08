@@ -10,7 +10,7 @@ for i = 1:length(dir_list)
     file_list = dir(['/u/cs401/speechdata/Training/' dir_list(i).name '/*.phn']);
     %disp(length(file_list))
     
-    for index = 1:length(file_list)
+    for index = 1:ceil(length(file_list) * 5 / 6)
         % loop through each phn file and corresponding mfcc file
         phn_name = ['/u/cs401/speechdata/Training/' dir_list(i).name '/' file_list(index).name];
         %disp(phn_name)
@@ -31,7 +31,11 @@ for i = 1:length(dir_list)
             if ~isfield(data, phoneme{line})
                 data.(phoneme{line}) = {};
             end
+<<<<<<< HEAD
             phoneme_matrix = mfcc_file(start_t:end_t, 1:7).';
+=======
+            phoneme_matrix = mfcc_file(start_t:end_t, 1:14).';
+>>>>>>> dffe9b53782e9bae7339507f6a04ebae2e262224
             data.(phoneme{line}) = [data.(phoneme{line}); phoneme_matrix];
         end
         
@@ -46,11 +50,19 @@ phonemes = fieldnames(data);
 for index = 1:numel(phonemes)
     % transpose to a one-by-N matrix
     data.(phonemes{index}) = data.(phonemes{index}).';
+<<<<<<< HEAD
     HMM.(phonemes{index}) = initHMM(data.(phonemes{index}), 4, 1, 'kmeans');
     [HMM.(phonemes{index}),LL] = trainHMM(HMM.(phonemes{index}), data.(phonemes{index}));
 end
 
 save('./HMM_20iter_4Mixture_1State_7Dim.mat', 'HMM', '-mat');
+=======
+    HMM.(phonemes{index}) = initHMM(data.(phonemes{index}), 4, 2, 'kmeans');
+    [HMM.(phonemes{index}),LL] = trainHMM(HMM.(phonemes{index}), data.(phonemes{index}));
+end
+
+save('./HMM_20iter_4Mixture_2State_14Dim_8data.mat', 'HMM', '-mat');
+>>>>>>> dffe9b53782e9bae7339507f6a04ebae2e262224
 
 
 
