@@ -49,7 +49,7 @@ M   3     |      0.9333    0.8667    0.8667   0.9333   0.8667    0.8667
 
 In this part, I tested M=1 2 3 4 5 8, epsilon=0.001, 0.01, 0.1, 1, 10, 100, and |S|=10, 20, 30
 
-From the tables above, we can see the acuracy rate is increasing when M gets larger. And missing speaker data would affect accuracy significantly. Accuracy decreases as the number of speakers decreases and is prevented close to 1. But epsilon seems don't have much effect on accuracy. 
+From the tables above, we can see the accuracy rate is increasing when M gets larger. And missing speaker data would affect accuracy significantly. Accuracy decreases as the number of speakers decreases and is prevented close to 1. But epsilon seems don't have much effect on accuracy. 
 
 
 
@@ -58,22 +58,22 @@ From the tables above, we can see the acuracy rate is increasing when M gets lar
 
 There are many ways. 
 Firstly, we can use K-means to learn clusters distribution of data, which can help us initialize mean better. 
-Also, we can use full variance matrix instead of diagonal ones. Because it's a strong and strict assumption that all the variance matrix are diagonal, which may not be pratical. 
+Also, we can use full variance matrix instead of diagonal ones. Because it's a strong and strict assumption that all the variance matrix are diagonal, which may not be practical. 
 Then, we can increase the number of components of MoG. Tables above shows that larger M can increase accuracy effectively.
 Lastly, we can use more iterations and less epsilon to make model more converge to accurate model.
 
 
 
 
-# When would your classifier decide that a given test utterance comes from none of the trained speaker models, and how would your classi er come to this decision?
+# When would your classifier decide that a given test utterance comes from none of the trained speaker models, and how would your classifier come to this decision?
 
-If the target trained speaker DNE, the logliklihood of that case will be mush smaller than other test cases. 
-
-
+If the target trained speaker DNE, the loglikelihood of that case will be mush smaller than other test cases. 
 
 
-#Can you think of some alternative methods for doing speaker identi cation that don't use Gaussian mixtures?
 
-Since the speaker recognization problem is a multi-classification problem, the general classification model can be used on this problem. 
-For example, we can use SVM, logisitic regression, desicion tree , etc. 
-We can even use PCA to reduce the dimension of data, since now we have 14 dimensions, which is quite large, makes computation complicated and causes overfittig (maybe).
+
+#Can you think of some alternative methods for doing speaker identification that don't use Gaussian mixtures?
+
+Since the speaker recognition problem is a multi class classification problem, the general multi-class classification models can be used on this problem. 
+For example, we can use SVM, logistic regression, decision tree , KNN, etc. 
+We can even use PCA to reduce the dimension of data, since now we have 14 dimensions, which is quite large, makes computation complicated and causes overfitting (maybe).
