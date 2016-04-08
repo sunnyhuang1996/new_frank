@@ -1,6 +1,4 @@
 function [likelihood, speakers] = gmmClassify(model, M)
-%get = {};
-%answer = {'MMRP0', 'MPGH0', 'MKLW0', 'FSAH0', 'FVFB0', 'FJSP0', 'MTPF0', 'MRDD0', 'MRSO0', 'MKLS0', 'FETB0', 'FMEM0', 'FCJF0', 'MWAR0', 'MTJS0'};
 
 num_candidate = length(model);
 
@@ -29,8 +27,5 @@ for utterance=1:length(uterrance_files)
         fprintf(fileID, '%f\n', likelihood(i));
     end
     fclose(fileID);
-    %get{utterance} = model{sp_id(1)}.name; 
+    
 end
-%get = get(1:15);
-%disp(get)
-%disp(sum(strcmp(answer, get)))
