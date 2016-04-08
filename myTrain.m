@@ -31,7 +31,7 @@ for i = 1:length(dir_list)
             if ~isfield(data, phoneme{line})
                 data.(phoneme{line}) = {};
             end
-            phoneme_matrix = mfcc_file(start_t:end_t, 1:end-1).';
+            phoneme_matrix = mfcc_file(start_t:end_t, 1:7).';
             data.(phoneme{line}) = [data.(phoneme{line}); phoneme_matrix];
         end
         
@@ -46,11 +46,11 @@ phonemes = fieldnames(data);
 for index = 1:numel(phonemes)
     % transpose to a one-by-N matrix
     data.(phonemes{index}) = data.(phonemes{index}).';
-    HMM.(phonemes{index}) = initHMM(data.(phonemes{index}), 4, 3, 'kmeans');
+    HMM.(phonemes{index}) = initHMM(data.(phonemes{index}), 4, 1, 'kmeans');
     [HMM.(phonemes{index}),LL] = trainHMM(HMM.(phonemes{index}), data.(phonemes{index}));
 end
 
-save('./HMM_20iter_4Mixture.mat', 'HMM', '-mat');
+save('./HMM_20iter_4Mixture_1State_7Dim.mat', 'HMM', '-mat');
 
 
 
