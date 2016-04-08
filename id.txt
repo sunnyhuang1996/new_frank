@@ -3,7 +3,9 @@ First Name: Shanshan
 Student ID Number: 1000371509 
 CDF login id: g4sunny
 Contact email address: sunny.huang@mail.utoronto.ca 
-BlueMix credentials:    "username": "0011056e-c82a-4dea-8354-c697c607a580", "password": "6izojpCZMrdJ",
+BlueMix credentials:    
+"username": "96c532b7-0e6b-436b-b18f-3f1cfb71028a", "password": "3o6vWG9hrUdr"
+"username": "d069b5e3-7496-4f1d-b26c-82d618b56e9a", "password": "Rf2SYjGGw2ao"
 UG/Grad?: UG
 
 Last name: Fang
